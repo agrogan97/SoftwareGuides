@@ -75,5 +75,40 @@ Store Code on Github
 Firstly, make sure you have a Github account. You do this simply from https://github.com/.
 
 The first thing to do is create a new Github repo to store your code, or copy your local repo to. Do this from the green 'new' button on the left-hand side toolbar and follow
-the instructions to name it. This will create a unique URL to your
+the instructions to name it. This will create a unique URL to your project.
+
+It is common when creating a new repo in Github to take up their offer of creating a README, .gitignore, adding a license, etc. straight from the browser. This is
+absolutely fine to do! It will however cause a very common beginner problem in Github, which is that you can't directly merge your local work into the main branch 
+in your Github repo, as they'll have what's called 'unrelated histories'. We can easily resolve this though, by merging the branches locally, and then pushing.
+
+First, from your terminal, give git the address of your remote repository: ::
+
+    git remote add origin https://github.com/<username>/<project>
+
+replacing <username> and <project> with your specific details. If you have not previously authenticated your device to use Github, do that by following the instructions at 
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token. The easiest way to do this is to just verify with a browser,
+using https://cli.github.com/manual/gh_auth_login.
+
+Now, pull down the repo you just created: ::
+
+    git pull 
+
+This will likely be the branch 'main', with your local branch being called 'master'. We know exactly what's in each of these, and that we're happy to merge.
+The only thing to be aware of is if you have multiple copies of a README or .gitignore, so make sure there are no conflicts here. Once satisfied, run: ::
+
+    git checkout main 
+    git merge master --allow-unrelated-histories
+
+This will open a vim window to add a comment. To leave as default and exit vim, type::
+
+    wq
+
+and hit enter. The steps above first switch the current branch to 'main', and then merge 'master' into 'main'. See the refdocs for more information about 
+the syntax and flags of this command.
+
+Finally, go ahead and push the local 'main' branch to Github, and update the remoter 'main' branch, with: ::
+
+    git push
+
+
 
