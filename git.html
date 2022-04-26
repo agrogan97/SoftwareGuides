@@ -138,7 +138,37 @@ this command without that flag, git would open a VIM window, where you are expec
 <h3>Store Code on Github<a class="headerlink" href="#store-code-on-github" title="Permalink to this headline"></a></h3>
 <p>Firstly, make sure you have a Github account. You do this simply from <a class="reference external" href="https://github.com/">https://github.com/</a>.</p>
 <p>The first thing to do is create a new Github repo to store your code, or copy your local repo to. Do this from the green ‘new’ button on the left-hand side toolbar and follow
-the instructions to name it. This will create a unique URL to your</p>
+the instructions to name it. This will create a unique URL to your project.</p>
+<p>It is common when creating a new repo in Github to take up their offer of creating a README, .gitignore, adding a license, etc. straight from the browser. This is
+absolutely fine to do! It will however cause a very common beginner problem in Github, which is that you can’t directly merge your local work into the main branch
+in your Github repo, as they’ll have what’s called ‘unrelated histories’. We can easily resolve this though, by merging the branches locally, and then pushing.</p>
+<p>First, from your terminal, give git the address of your remote repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/&lt;</span><span class="n">project</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>replacing &lt;username&gt; and &lt;project&gt; with your specific details. If you have not previously authenticated your device to use Github, do that by following the instructions at
+<a class="reference external" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token</a>. The easiest way to do this is to just verify with a browser,
+using <a class="reference external" href="https://cli.github.com/manual/gh_auth_login">https://cli.github.com/manual/gh_auth_login</a>.</p>
+<p>Now, pull down the repo you just created:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<p>This will likely be the branch ‘main’, with your local branch being called ‘master’. We know exactly what’s in each of these, and that we’re happy to merge.
+The only thing to be aware of is if you have multiple copies of a README or .gitignore, so make sure there are no conflicts here. Once satisfied, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">master</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">unrelated</span><span class="o">-</span><span class="n">histories</span>
+</pre></div>
+</div>
+<p>This will open a vim window to add a comment. To leave as default and exit vim, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wq</span>
+</pre></div>
+</div>
+<p>and hit enter. The steps above first switch the current branch to ‘main’, and then merge ‘master’ into ‘main’. See the refdocs for more information about
+the syntax and flags of this command.</p>
+<p>Finally, go ahead and push the local ‘main’ branch to Github, and update the remoter ‘main’ branch, with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
