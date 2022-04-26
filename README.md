@@ -7,3 +7,9 @@ Contains guides on:
   - DevOps 📈😍
 
 To help you spend less time stressing about organising and writing code, and more time doing research 🥳🥳💡
+
+
+Usage
+=====
+
+Download the repo, and open up index.html.
