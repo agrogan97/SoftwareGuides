@@ -1,0 +1,140 @@
+Getting Started 
+===============
+
+A Fresh Installation
+--------------------
+
+The following instructions explain how to use Sphinx and restructured text files to generate beautiful docs without lifting a finger (except to type, you will need to do that).
+
+Sphinx is a Python package, so you'll need to have Python3 installed on your system. This is simple to do, just download it from https://www.python.org/downloads/.
+We then need to install Sphinx. The best way to do this is via pip (the Python package manager), inside a virtual environment. This helps keep installations clean
+and free from dependency clashes etc. If you care as deeply about proper package installation as I do, then refer to the next section on virtual environment installation,
+but if not, skip to the section after.
+
+Installing a Virtual environment
+################################
+
+Virtual environments are just small, local python installations within your pc. When you create one and activate it, your code will install packages to this local version,
+and this will be used to run your code. It stop issues that occur when pythonCodeA.py runs TensorFlow v.X, while pythonCodeB.py runs TensorFlow v.Y, and you don't want 
+to have to keep uninstalling and reinstalling different package versions.
+
+We do this installation from the command line. On a Unix machine (Linux, MAC OS, etc.) go to your search bar and search 'Terminal'. Open this up. If you're using Windows,
+type 'cmd' into your search bar and open up a command line.
+
+Windows
+*******
+
+With your cmd open, navigate to a directory where you want to install the virtualenvironment folder, such as Documents, eg: ::
+    
+    cd C://../Documents/MyCode/venvs/
+
+and type: ::
+
+    pip install virtualenv
+    virtualenv -p=python3 docsenv
+
+where docsenv is the name of the environment - you can name it whatever you want (but don't include spaces).
+Finally, activate your virtual environment by typing: ::
+
+    docsenv/Scripts/activate 
+
+but replace docsenv with whatever name you used.
+
+Unix (Linux, MAC, etc.)
+***********************
+
+With your terminal open, navigate to a directory where you want to install the virtualenvironment folder, such as Documents, eg: ::
+
+    cd .../Documents/MyCode/venvs/
+
+and type: ::
+
+    pip install virtualenv
+    virtualenv -p=python3 docsenv
+
+where docsenv is the name of the environment - you can name it whatever you want (but don't include spaces).
+Finally, activate your virtual environment by typing: ::
+
+    source docsenv/bin/activate
+
+but replace docsenv with whatever name you used.
+
+Anaconda
+********
+
+You can also do this with Anaconda. See the Anaconda website for more details and installation instructions.
+
+Back To Sphinx
+**************
+
+Now, with your virtualenvironment installed and activated (or not if you're a rebel), install Sphinx via pip: ::
+
+    pip install sphinx sphinx-rtd-theme sphinx-js
+
+And let this complete. Congrats, you have Sphinx installed!
+
+A Fresh Sphinx Project
+----------------------
+
+You can initialise a new Sphinx project by running: ::
+
+    sphinx-quickstart
+
+from within a terminal, where you have navigated to your desired installation directory (see instructions above about finding an appropriate terminal for your system).
+
+This will present some quickstart options to initialise your project, such as project name, author, etc. When asked about separate build and source directories,
+I'd suggest opting for separating them, to make things clearer. Type into the terminal to fill these out. Once this is done, the necessary folders will be created 
+in your root directory. Depending on the option you chose in quickstart, this will create a build dir, a source dir, and a couple of Makefiles.
+
+Inside source, there are some .rst files which you can edit. Inside build, there are html files which will be updated when you make and apply changes.
+
+To make and apply changes, from inside the same terminal as previously, run: ::
+
+    sphinx-build -b html source build
+
+This command is broken down into: ::
+
+    sphinx-build -b <build-type> <source-dir> <build-dir>
+
+as there are other options available for build-type (such as latex, pdf, etc.) and your source and build directories may differ if your source code is elsewhere.
+
+Using the ReadTheDocs Theme 
+***************************
+
+As a default, Sphinx uses the Alabaster theme. The most common Sphinx theme is ReadTheDocs (eg. https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html). 
+To configure your project to use this theme instead, open on the Python file in source/conf.py using any text or code editor. 
+
+On line 17 (approx), add: ::
+
+    import sphinx_rtd_theme
+
+On line 32 (approx) change extensions to: ::
+
+    extensions = [
+        'sphinx_rtd_theme'
+    ]
+
+And finally, on line 50 (approx), change html_theme to: ::
+
+    html_theme = 'sphinx_rtd_theme'
+
+And rebuild your project! Sometimes Sphinx can get stuck updating the theme, so try navigating up a directory, 
+re-navigating to the folder, and building a couple of times until it updates. Open and close the page in your browser
+in case the browser has cached the static files.
+
+Autodocumenting
+***************
+
+Sphinx allows you to manually edit the .rst files that are compiled into your html pages (as I have here). It is very likely that you
+will have to do at least some of this, to add a paragraph saying what your code is, etc.
+However, Sphinx also provides tools to auto-generate functional documentation too, which is what we shall cover here.
+
+This guide assumes you're documenting either Python or Javascript code. For alternatives email alex.grogan@xpsy.ox.ac.uk and he'll hack a fix together for you.
+
+I've just put this bit in ::
+
+    def printStuff():
+
+        print("Hello")
+
+        return None
