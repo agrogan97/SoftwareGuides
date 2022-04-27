@@ -101,7 +101,7 @@ The only thing to be aware of is if you have multiple copies of a README or .git
 
 This will open a vim window to add a comment. To leave as default and exit vim, type::
 
-    wq
+    :wq
 
 and hit enter. The steps above first switch the current branch to 'main', and then merge 'master' into 'main'. See the refdocs for more information about 
 the syntax and flags of this command.
@@ -109,6 +109,32 @@ the syntax and flags of this command.
 Finally, go ahead and push the local 'main' branch to Github, and update the remoter 'main' branch, with: ::
 
     git push
+
+Merge My Working Branch with the Main Branch 
+============================================
+
+"Ah sorry I can't show you my software right now, it was working this morning but then I tried to add a new feature and broke it".
+
+This happened because you were editing the ground truth version of your code! If, however, you had a development branch to make changes with, and a separate
+ground truth branch that you only stored working, show-offable code in, then you could avoid this problem.
+
+Create a new branch locally, with ::
+
+    git branch [branch-name]
+
+For the purposes of this tutorial, we'll call the new branch 'dev'. If you then make some changes to dev, and want to commit, you can do so with the following: ::
+
+    git add . && git commit -m "changes to dev"
+    git push --set-upstream origin dev
+
+Whew, few things to note here. The first line is simply combining the add, commit, and message functions into a single line. There are more efficient ways to write this,
+but I like it in tutorials for verbosity. In the second line, note the '--set-upstream' flag. All this is doing is telling our new dev branch where to pull new versions from,
+i.e which is our main working repo - in this case, our remote repo named 'origin'.
+
+Now on Github in our browser, we can submit a 'pull request'. This is a request to the project owner(s) to combine one branch with another. In this case, we want to 
+combine the dev branch with the main branch. Since 2 codebases are colliding here, we are vulnerable to a plethora of errors and breakages. Github will compare the 
+codebases for us, and confirm that they can be merged safely, or tell us we need to make changes. If we are safe to merge, go ahead and approve the pull request 
+(as you are the owner of your own project). In collaborative work, you'd have to wait here for approval.
 
 
 

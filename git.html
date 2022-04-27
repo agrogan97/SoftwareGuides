@@ -44,6 +44,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#i-want-to">I Want To….</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#create-a-local-repo-for-my-code">Create a local repo for my code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#store-code-on-github">Store Code on Github</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merge-my-working-branch-with-the-main-branch">Merge My Working Branch with the Main Branch</a></li>
 </ul>
 </li>
 </ul>
@@ -160,7 +161,7 @@ The only thing to be aware of is if you have multiple copies of a README or .git
 </pre></div>
 </div>
 <p>This will open a vim window to add a comment. To leave as default and exit vim, type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wq</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">wq</span>
 </pre></div>
 </div>
 <p>and hit enter. The steps above first switch the current branch to ‘main’, and then merge ‘master’ into ‘main’. See the refdocs for more information about
@@ -169,6 +170,28 @@ the syntax and flags of this command.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
 </pre></div>
 </div>
+</section>
+<section id="merge-my-working-branch-with-the-main-branch">
+<h3>Merge My Working Branch with the Main Branch<a class="headerlink" href="#merge-my-working-branch-with-the-main-branch" title="Permalink to this headline"></a></h3>
+<p>“Ah sorry I can’t show you my software right now, it was working this morning but then I tried to add a new feature and broke it”.</p>
+<p>This happened because you were editing the ground truth version of your code! If, however, you had a development branch to make changes with, and a separate
+ground truth branch that you only stored working, show-offable code in, then you could avoid this problem.</p>
+<p>Create a new branch locally, with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="p">[</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For the purposes of this tutorial, we’ll call the new branch ‘dev’. If you then make some changes to dev, and want to commit, you can do so with the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span> <span class="o">&amp;&amp;</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;changes to dev&quot;</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="nb">set</span><span class="o">-</span><span class="n">upstream</span> <span class="n">origin</span> <span class="n">dev</span>
+</pre></div>
+</div>
+<p>Whew, few things to note here. The first line is simply combining the add, commit, and message functions into a single line. There are more efficient ways to write this,
+but I like it in tutorials for verbosity. In the second line, note the ‘–set-upstream’ flag. All this is doing is telling our new dev branch where to pull new versions from,
+i.e which is our main working repo - in this case, our remote repo named ‘origin’.</p>
+<p>Now on Github in our browser, we can submit a ‘pull request’. This is a request to the project owner(s) to combine one branch with another. In this case, we want to
+combine the dev branch with the main branch. Since 2 codebases are colliding here, we are vulnerable to a plethora of errors and breakages. Github will compare the
+codebases for us, and confirm that they can be merged safely, or tell us we need to make changes. If we are safe to merge, go ahead and approve the pull request
+(as you are the owner of your own project). In collaborative work, you’d have to wait here for approval.</p>
 </section>
 </section>
 </section>
