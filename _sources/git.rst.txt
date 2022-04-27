@@ -101,7 +101,7 @@ The only thing to be aware of is if you have multiple copies of a README or .git
 
 This will open a vim window to add a comment. To leave as default and exit vim, type::
 
-    wq
+    :wq
 
 and hit enter. The steps above first switch the current branch to 'main', and then merge 'master' into 'main'. See the refdocs for more information about 
 the syntax and flags of this command.
