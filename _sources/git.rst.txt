@@ -86,8 +86,8 @@ First, from your terminal, give git the address of your remote repository: ::
     git remote add origin https://github.com/<username>/<project>
 
 replacing <username> and <project> with your specific details. If you have not previously authenticated your device to use Github, do that by following the instructions at 
-https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token. The easiest way to do this is to just verify with a browser,
-using https://cli.github.com/manual/gh_auth_login.
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token. The easiest way to do this is to just verify with a browser (using command: gh auth login -w) ,
+using https://cli.github.com/manual/gh_auth_login. Make sure you have permissions to edit your .config/ directory (via command: sudo  gh auth login -w) because otherwise the permission will be denied. 
 
 Now, pull down the repo you just created: ::
 
