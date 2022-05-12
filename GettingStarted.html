@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Getting Started &mdash; DocsExample  documentation</title>
+  <title>Sphinx and Autodoc &mdash; DocsExample  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -39,7 +39,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sphinx and Autodoc</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#a-fresh-installation">A Fresh Installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installing-a-virtual-environment">Installing a Virtual environment</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
@@ -48,9 +48,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#back-to-sphinx">Back To Sphinx</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#a-fresh-sphinx-project">A Fresh Sphinx Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-readthedocs-theme">Using the ReadTheDocs Theme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#autodocumenting">Autodocumenting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#auto-documenting-js">Auto-documenting JS</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#a-fresh-sphinx-project">A Fresh Sphinx Project</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">Git Tutorial</a></li>
@@ -70,7 +75,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Getting Started</li>
+      <li>Sphinx and Autodoc</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/GettingStarted.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -80,8 +85,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h1>
+  <section id="sphinx-and-autodoc">
+<h1>Sphinx and Autodoc<a class="headerlink" href="#sphinx-and-autodoc" title="Permalink to this headline"></a></h1>
 <section id="a-fresh-installation">
 <h2>A Fresh Installation<a class="headerlink" href="#a-fresh-installation" title="Permalink to this headline"></a></h2>
 <p>The following instructions explain how to use Sphinx and restructured text files to generate beautiful docs without lifting a finger (except to type, you will need to do that).</p>
@@ -145,9 +150,8 @@ Finally, activate your virtual environment by typing:</p>
 <p>And let this complete. Congrats, you have Sphinx installed!</p>
 </section>
 </section>
-</section>
 <section id="a-fresh-sphinx-project">
-<h2>A Fresh Sphinx Project<a class="headerlink" href="#a-fresh-sphinx-project" title="Permalink to this headline"></a></h2>
+<h3>A Fresh Sphinx Project<a class="headerlink" href="#a-fresh-sphinx-project" title="Permalink to this headline"></a></h3>
 <p>You can initialise a new Sphinx project by running:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>
 </pre></div>
@@ -165,7 +169,24 @@ in your root directory. Depending on the option you chose in quickstart, this wi
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">source</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">build</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>as there are other options available for build-type (such as latex, pdf, etc.) and your source and build directories may differ if your source code is elsewhere.</p>
+<p>as there are other options available for build-type (such as latex, pdf, etc.) and your source and build directories may differ if your source code is elsewhere.
+If your build and source dirs are within the path of your makefile (i.e you did the standard initialisation process and directory structure looks like):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span>
+<span class="o">|</span><span class="n">___makefile</span>
+<span class="o">|</span><span class="n">___make</span><span class="o">.</span><span class="n">bat</span>
+<span class="o">|</span><span class="n">___source</span><span class="o">/</span>
+    <span class="o">|</span><span class="n">___</span><span class="o">&lt;...&gt;.</span><span class="n">rst</span>
+<span class="o">|</span><span class="n">___build</span><span class="o">/</span>
+    <span class="o">|</span><span class="n">___</span><span class="o">&lt;...&gt;.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>Then you can build your project by simply running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-readthedocs-theme">
+<h3>Using the ReadTheDocs Theme<a class="headerlink" href="#using-the-readthedocs-theme" title="Permalink to this headline"></a></h3>
 <p>As a default, Sphinx uses the Alabaster theme. The most common Sphinx theme is ReadTheDocs (eg. <a class="reference external" href="https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html">https://sphinx-rtd-theme.readthedocs.io/en/stable/configuring.html</a>).
 To configure your project to use this theme instead, open on the Python file in source/conf.py using any text or code editor.</p>
 <p>On line 17 (approx), add:</p>
@@ -185,18 +206,128 @@ To configure your project to use this theme instead, open on the Python file in 
 <p>And rebuild your project! Sometimes Sphinx can get stuck updating the theme, so try navigating up a directory,
 re-navigating to the folder, and building a couple of times until it updates. Open and close the page in your browser
 in case the browser has cached the static files.</p>
+</section>
+<section id="autodocumenting">
+<h3>Autodocumenting<a class="headerlink" href="#autodocumenting" title="Permalink to this headline"></a></h3>
 <p>Sphinx allows you to manually edit the .rst files that are compiled into your html pages (as I have here). It is very likely that you
 will have to do at least some of this, to add a paragraph saying what your code is, etc.
 However, Sphinx also provides tools to auto-generate functional documentation too, which is what we shall cover here.</p>
 <p>This guide assumes you’re documenting either Python or Javascript code. For alternatives email <a class="reference external" href="mailto:alex&#46;grogan&#37;&#52;&#48;xpsy&#46;ox&#46;ac&#46;uk">alex<span>&#46;</span>grogan<span>&#64;</span>xpsy<span>&#46;</span>ox<span>&#46;</span>ac<span>&#46;</span>uk</a> and he’ll hack a fix together for you.</p>
-<p>I’ve just put this bit in</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">printStuff</span><span class="p">():</span>
+<p>Sphinx can extract the docstrings from code blocks and format them into digestable documentation. The difference between docstrings and normal comments is that
+a docstring gives information about a high-level structure. For example, this may be a module, a class, a function, etc.
+On the other hand, comments describe what is happening line-by-line, and requires context (i.e the code itself) to be useful for another person to read and understand.
+A docstring for python looks like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">someFunction</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Performs some transformation on the args</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="sd">    :param arg1: A description of the first arg</span>
+<span class="sd">    :type arg1: float</span>
+<span class="sd">    :param arg2: A description of the second arg</span>
+<span class="sd">    :type arg2: float</span>
+<span class="sd">    :return: The transformation of the args</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">return</span> <span class="kc">None</span>
+<span class="o">...</span>
+
+<span class="k">return</span> <span class="n">someData</span>
 </pre></div>
 </div>
+<p>The specific format of the docstring can vary. The format above works well with Sphinx, and in fact was generated using the python docstring generator plugin
+for Visual Studio Code. Similarly, Google recommend a slight variation that makes it slightly more readable within the code, but less so to Autodoc. This can
+be found within the Google styleguide for Python: <a class="reference external" href="https://google.github.io/styleguide/pyguide.html">https://google.github.io/styleguide/pyguide.html</a></p>
+<p>Sphinx naturally works with Python, however, I have made an interpreter for Javascript. The current build of this expects you to use Python docstrings, but
+I’m working on interpreting JS docstrings too, so please follow this repo and the Sphinx4JS repo (<a class="reference external" href="https://github.com/agrogan97/Sphinx4JS">https://github.com/agrogan97/Sphinx4JS</a>) to keep up to date with
+changes!</p>
+<section id="auto-documenting-js">
+<h4>Auto-documenting JS<a class="headerlink" href="#auto-documenting-js" title="Permalink to this headline"></a></h4>
+<p>Add docstrings to your code using the Python structure. For example, a JS function with Python docstring would look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">someFunction</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">/*</span><span class="n">Performs</span> <span class="n">some</span> <span class="n">transformation</span> <span class="n">on</span> <span class="n">the</span> <span class="n">args</span>
+
+    <span class="p">:</span><span class="n">param</span> <span class="n">arg1</span><span class="p">:</span> <span class="n">A</span> <span class="n">description</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">arg</span>
+    <span class="p">:</span><span class="nb">type</span> <span class="n">arg1</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="p">:</span><span class="n">param</span> <span class="n">arg2</span><span class="p">:</span> <span class="n">A</span> <span class="n">description</span> <span class="n">of</span> <span class="n">the</span> <span class="n">second</span> <span class="n">arg</span>
+    <span class="p">:</span><span class="nb">type</span> <span class="n">arg2</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="p">:</span><span class="k">return</span><span class="p">:</span> <span class="n">The</span> <span class="n">transformation</span> <span class="n">of</span> <span class="n">the</span> <span class="n">args</span>
+    <span class="p">:</span><span class="n">rtype</span><span class="p">:</span> <span class="nb">float</span>
+
+    <span class="o">*/</span>
+
+    <span class="k">return</span> <span class="n">someData</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Next, download the Sphinx4JS code from the repo at <a class="reference external" href="https://github.com/agrogan97/Sphinx4JS">https://github.com/agrogan97/Sphinx4JS</a>. The src file for this is called <cite>parseJS.py</cite>. This should be stored in the
+root directory of your documentation, alongside the Makefile. Your JS source code can be anywhere on your system, as parseJS.py will take the source directory as a
+command-line input. Thus, for src code at local directory code/js/, you would run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">parseJS</span><span class="o">.</span><span class="n">py</span> <span class="n">code</span><span class="o">/</span><span class="n">js</span><span class="o">/</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+<p>A code dir with this structure is included within this repo. A single JS file can be found at <cite>code/src/functions.js</cite>. By running the python command above, Sphinx4JS
+will translate your JS docstrings into Python, and store them in a local repo called parsedPython. This will be the source directory that Sphinx reads from.
+Before we make the autodocs, we need to tell Sphinx where to find our js source code. To do this, open up <cite>source/conf.py</cite>. Underneath the imports, add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;parsedPython&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And now at long last, we can autodocument our code! For each module in parsedPython (where one module is one file), add the
+following to an RST file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">automodule</span><span class="p">::</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>
+    <span class="p">:</span><span class="n">members</span><span class="p">:</span>
+    <span class="p">:</span><span class="n">undoc</span><span class="o">-</span><span class="n">members</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>replacing filename with the name of a file in <cite>parsedPython</cite>.</p>
+<p>For example, using <cite>code/js/functions.js</cite>, we can add the autodoc rst:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">automodule</span><span class="p">::</span> <span class="n">functions</span>
+    <span class="p">:</span><span class="n">members</span><span class="p">:</span>
+    <span class="p">:</span><span class="n">undoc</span><span class="o">-</span><span class="n">members</span><span class="p">:</span>
+</pre></div>
+</div>
+<span class="target" id="module-functions"></span><dl class="py function">
+<dt class="sig sig-object py" id="functions.exampleFunctionForSphinx">
+<span class="sig-prename descclassname"><span class="pre">functions.</span></span><span class="sig-name descname"><span class="pre">exampleFunctionForSphinx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.exampleFunctionForSphinx" title="Permalink to this definition"></a></dt>
+<dd><p>A function to be used as example for the Sphinx software guide</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arg1</strong> (<em>float</em>) – A description of the first arg</p></li>
+<li><p><strong>arg2</strong> (<em>float</em>) – A description of the second arg</p></li>
+<li><p><strong>arg3</strong> (<em>str</em>) – A description of the third arg</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The transformation of the args</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="functions.secondExampleFunctionForSphinx">
+<span class="sig-prename descclassname"><span class="pre">functions.</span></span><span class="sig-name descname"><span class="pre">secondExampleFunctionForSphinx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.secondExampleFunctionForSphinx" title="Permalink to this definition"></a></dt>
+<dd><p>A second function to be used as example for the Sphinx software guide</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arg1</strong> (<em>float</em>) – A description of the first arg</p></li>
+<li><p><strong>arg2</strong> (<em>float</em>) – A description of the second arg</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The transformation of the args</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
 </section>
 </section>
 
