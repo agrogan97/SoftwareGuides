@@ -13,5 +13,3 @@ Usage
 =====
 
 Download the repo, and open up index.html.
-
-hi
